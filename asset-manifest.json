@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/phaser-platformer/static/css/main.f6836299.css",
+    "main.js": "/phaser-platformer/static/js/main.9128277a.js",
+    "static/media/platform.png": "/phaser-platformer/static/media/platform.69db09bf9618dbe6c387.png",
+    "static/media/sky.png": "/phaser-platformer/static/media/sky.47a86b192804f1490bee.png",
+    "static/media/dude.png": "/phaser-platformer/static/media/dude.526a78a9d1f64835f4c5.png",
+    "index.html": "/phaser-platformer/index.html",
+    "static/media/star.png": "/phaser-platformer/static/media/star.a7cb585cf61f7dafb028.png",
+    "main.f6836299.css.map": "/phaser-platformer/static/css/main.f6836299.css.map",
+    "main.9128277a.js.map": "/phaser-platformer/static/js/main.9128277a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f6836299.css",
+    "static/js/main.9128277a.js"
+  ]
+}
