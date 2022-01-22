@@ -17,14 +17,14 @@ jobs:
         with:
           node-version: 16
 
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        with:
-          path: |
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/package.json', './package.json') }}
-        id: cache
+      # - name: Cache dependencies
+      #   uses: actions/cache@v2
+      #   with:
+      #     path: |
+      #       node_modules
+      #       */*/node_modules
+      #     key: ${{ runner.os }}-${{ hashFiles('**/package.json', './package.json') }}
+      #   id: cache
 
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
