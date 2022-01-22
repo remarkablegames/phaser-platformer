@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/phaser-platformer/static/css/main.f6836299.css",
-    "main.js": "/phaser-platformer/static/js/main.9128277a.js",
-    "static/media/platform.png": "/phaser-platformer/static/media/platform.69db09bf9618dbe6c387.png",
-    "static/media/sky.png": "/phaser-platformer/static/media/sky.47a86b192804f1490bee.png",
-    "static/media/dude.png": "/phaser-platformer/static/media/dude.526a78a9d1f64835f4c5.png",
+    "main.js": "/phaser-platformer/static/js/main.7ecc74fd.js",
+    "static/media/ground.png": "/phaser-platformer/static/media/ground.8c031e21f4f4ab0cdc6a.png",
+    "static/media/platform.png": "/phaser-platformer/static/media/platform.2769e760d39a9a2f9c98.png",
+    "static/media/items.png": "/phaser-platformer/static/media/items.4bffedb75ef2d1e38e76.png",
+    "static/media/player.png": "/phaser-platformer/static/media/player.526a78a9d1f64835f4c5.png",
     "index.html": "/phaser-platformer/index.html",
-    "static/media/star.png": "/phaser-platformer/static/media/star.a7cb585cf61f7dafb028.png",
     "main.f6836299.css.map": "/phaser-platformer/static/css/main.f6836299.css.map",
-    "main.9128277a.js.map": "/phaser-platformer/static/js/main.9128277a.js.map"
+    "main.7ecc74fd.js.map": "/phaser-platformer/static/js/main.7ecc74fd.js.map"
   },
   "entrypoints": [
     "static/css/main.f6836299.css",
-    "static/js/main.9128277a.js"
+    "static/js/main.7ecc74fd.js"
   ]
 }
