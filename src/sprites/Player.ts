@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 
-import { Image } from '../types';
+import { key } from '../constants';
 
 enum Animation {
   Left = 'Left',
@@ -10,6 +10,7 @@ enum Animation {
 
 enum Speed {
   Horizontal = 160,
+  Rest = 0,
   Vertical = 330,
 }
 
@@ -20,7 +21,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     scene: Phaser.Scene,
     x: number,
     y: number,
-    texture = Image.Dude,
+    texture = key.spritesheet.player,
     frame = 0
   ) {
     super(scene, x, y, texture, frame);
@@ -42,7 +43,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     // Create left animation.
     this.anims.create({
       key: Animation.Left,
-      frames: this.anims.generateFrameNumbers(Image.Dude, {
+      frames: this.anims.generateFrameNumbers(key.spritesheet.player, {
         start: 0,
         end: 3,
       }),
@@ -53,14 +54,14 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     // Create turn animation.
     this.anims.create({
       key: Animation.Turn,
-      frames: [{ key: Image.Dude, frame: 4 }],
+      frames: [{ key: key.spritesheet.player, frame: 4 }],
       frameRate: 20,
     });
 
     // Create right animation.
     this.anims.create({
       key: Animation.Right,
-      frames: this.anims.generateFrameNumbers(Image.Dude, {
+      frames: this.anims.generateFrameNumbers(key.spritesheet.player, {
         start: 5,
         end: 8,
       }),
@@ -87,7 +88,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         break;
       // Stand still.
       default:
-        this.body.setVelocityX(0);
+        this.body.setVelocityX(Speed.Rest);
         this.anims.play(Animation.Turn);
         break;
     }
