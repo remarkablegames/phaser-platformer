@@ -1,53 +1,41 @@
 import Phaser from 'phaser';
 
-import { key, name } from '../constants';
+import * as assets from '../assets';
+import { key } from '../constants';
 import { Player } from '../sprites';
 
-let player: Player;
-
 export default class Main extends Phaser.Scene {
+  private player!: Player;
+
   constructor() {
     super({ key: key.scene.main });
   }
 
   create() {
-    const map = this.make.tilemap({ key: key.tilemap.map });
+    const map = this.make.tilemap({
+      key: key.tilemap.map,
+      tileWidth: assets.map.tilewidth,
+      tileHeight: assets.map.tileheight,
+    });
 
-    const groundTiles = map.addTilesetImage(
-      name.tileset.kenny_ground_64x64,
-      key.tileset.ground
-    );
-    const itemTiles = map.addTilesetImage(
-      name.tileset.kenny_items_64x64,
-      key.tileset.items
-    );
-    const platformTiles = map.addTilesetImage(
-      name.tileset.kenny_platformer_64x64,
-      key.tileset.platform
-    );
+    const tilesetName = assets.map.tilesets[0].name;
+    const groundTiles = map.addTilesetImage(tilesetName, key.image.ground);
 
-    // To use multiple tilesets in a single layer, pass them in an array like this
-    map.createLayer(name.layer['Tile Layer 1'], [
-      groundTiles,
-      itemTiles,
-      platformTiles,
-    ]);
+    // To use multiple tilesets in a single layer, pass them in an array of instances or strings
+    const layerName = assets.map.layers[0].name;
+    const groundLayer = map.createLayer(layerName, [groundTiles]);
 
-    // map.createLayer('Tile Layer 1', [groundTiles, itemTiles, platformTiles]);
+    // Have player collide with tiles
+    this.player = new Player(this, 32, Number(this.game.config.height) - 150);
+    groundLayer.setCollisionByExclusion([-1]);
+    this.physics.add.collider(this.player, groundLayer);
 
-    // Or pass an array of tileset name strings
-    // map.createLayer('Tile Layer 1', ['kenny_ground_64x64', 'kenny_items_64x64', 'kenny_platformer_64x64']);
-
-    this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
-
-    this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
-
-    player = new Player(this, 32, Number(this.game.config.height) - 150);
-    this.cameras.main.startFollow(player);
+    this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+    this.cameras.main.startFollow(this.player);
   }
 
   update(time: number, delta: number) {
-    player.update();
+    this.player.update();
   }
 }

@@ -1,52 +1,20 @@
-import { map } from '../assets';
-
 export const key = {
   image: {
-    ground: 'ground',
-    items: 'items',
-    platform: 'platform',
+    ground: 'image_ground',
+    items: 'image_items',
+    platform: 'image_platform',
   },
 
   scene: {
-    boot: 'boot',
-    main: 'main',
+    boot: 'scene_boot',
+    main: 'scene_main',
   },
 
   spritesheet: {
-    player: 'player',
+    player: 'spritesheet_player',
   },
 
   tilemap: {
-    map: 'map',
+    map: 'tilemap_map',
   },
-
-  tilemapTiledJSON: {
-    map: 'map',
-  },
-
-  tileset: {
-    ground: 'ground',
-    items: 'items',
-    platform: 'platform',
-  },
-} as const;
-
-type LayerName = 'Tile Layer 1';
-type TilesetName =
-  | 'kenny_ground_64x64'
-  | 'kenny_items_64x64'
-  | 'kenny_platformer_64x64';
-
-export const name = {
-  layer: map.layers.reduce((previousValue, currentValue) => {
-    const name = currentValue.name as LayerName;
-    previousValue[name] = name;
-    return previousValue;
-  }, {} as Record<LayerName, LayerName>),
-
-  tileset: map.tilesets.reduce((previousValue, currentValue) => {
-    const name = currentValue.name as TilesetName;
-    previousValue[name] = name;
-    return previousValue;
-  }, {} as Record<TilesetName, TilesetName>),
 } as const;
