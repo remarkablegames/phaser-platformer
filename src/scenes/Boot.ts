@@ -16,7 +16,7 @@ export default class Boot extends Phaser.Scene {
       frameWidth: 32,
       frameHeight: 48,
     });
-    this.load.tilemapTiledJSON(key.tilemapTiledJSON.map, assets.map);
+    this.load.tilemapTiledJSON(key.tilemap.map, assets.map);
   }
 
   create() {

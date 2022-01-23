@@ -14,9 +14,9 @@ enum Speed {
   Vertical = 330,
 }
 
-let cursors: Phaser.Types.Input.Keyboard.CursorKeys;
-
 export default class Player extends Phaser.Physics.Arcade.Sprite {
+  private cursors: Phaser.Types.Input.Keyboard.CursorKeys;
+
   constructor(
     scene: Phaser.Scene,
     x: number,
@@ -26,21 +26,27 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   ) {
     super(scene, x, y, texture, frame);
 
-    // Add the sprite to the scene.
+    // Add the sprite to the scene
     scene.add.existing(this);
 
-    // Enable physics for the sprite.
+    // Enable physics for the sprite
     scene.physics.world.enable(this);
 
-    // Add cursor keys.
-    cursors = scene.input.keyboard.createCursorKeys();
+    // Add cursor keys
+    this.cursors = scene.input.keyboard.createCursorKeys();
+
+    // Create sprite animations
+    this.createAnimations();
 
     if (this.body instanceof Phaser.Physics.Arcade.Body) {
-      // Player physics properties. Give the little guy some bounce.
+      // Player physics properties
+      // Give the little guy some bounce
       this.body.setBounceY(0.2).setCollideWorldBounds(true);
     }
+  }
 
-    // Create left animation.
+  private createAnimations() {
+    // Create left animation
     this.anims.create({
       key: Animation.Left,
       frames: this.anims.generateFrameNumbers(key.spritesheet.player, {
@@ -51,14 +57,14 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       repeat: -1,
     });
 
-    // Create turn animation.
+    // Create turn animation
     this.anims.create({
       key: Animation.Turn,
       frames: [{ key: key.spritesheet.player, frame: 4 }],
       frameRate: 20,
     });
 
-    // Create right animation.
+    // Create right animation
     this.anims.create({
       key: Animation.Right,
       frames: this.anims.generateFrameNumbers(key.spritesheet.player, {
@@ -76,25 +82,27 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     }
 
     switch (true) {
-      // Move to the left.
-      case cursors.left.isDown:
+      // Move to the left
+      case this.cursors.left.isDown:
         this.body.setVelocityX(-Speed.Horizontal);
         this.anims.play(Animation.Left, true);
         break;
-      // Move to the right.
-      case cursors.right.isDown:
+
+      // Move to the right
+      case this.cursors.right.isDown:
         this.body.setVelocityX(Speed.Horizontal);
         this.anims.play(Animation.Right, true);
         break;
-      // Stand still.
+
+      // Stand still
       default:
         this.body.setVelocityX(Speed.Rest);
         this.anims.play(Animation.Turn);
         break;
     }
 
-    // Allow player to jump if sprite is touching the ground.
-    if (cursors.up.isDown && this.body.touching.down) {
+    // Allow player to jump if sprite is on the ground
+    if (this.cursors.up.isDown && this.body.blocked.down) {
       this.body.setVelocityY(-Speed.Vertical);
     }
   }
