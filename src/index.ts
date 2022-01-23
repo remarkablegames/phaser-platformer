@@ -8,8 +8,8 @@ import { Boot, Main } from './scenes';
  * https://photonstorm.github.io/phaser3-docs/Phaser.Types.Core.html#.GameConfig
  */
 const config = {
-  width: 800,
-  height: 600,
+  width: 1024,
+  height: 768,
   title: 'Phaser Platformer',
   url: 'https://remarkablegames.org/phaser-platformer/',
   // see `.env` and `package.json`
@@ -19,13 +19,13 @@ const config = {
     default: 'arcade',
     arcade: {
       gravity: {
-        y: 300,
+        y: 400,
       },
       debug: process.env.NODE_ENV === 'development',
     },
   },
   disableContextMenu: true,
-  backgroundColor: '#000',
+  backgroundColor: '#fff',
   scale: {
     mode: Scale.FIT,
     autoCenter: Scale.CENTER_BOTH,
