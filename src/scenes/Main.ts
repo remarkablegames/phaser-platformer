@@ -35,7 +35,7 @@ export default class Main extends Phaser.Scene {
     this.cameras.main.startFollow(this.player);
   }
 
-  update(time: number, delta: number) {
+  update() {
     this.player.update();
   }
 }
