@@ -1,20 +1,19 @@
 export const key = {
   image: {
-    ground: 'image_ground',
-    items: 'image_items',
-    platform: 'image_platform',
+    spike: 'spike',
+    tiles: 'tiles',
   },
 
   scene: {
-    boot: 'scene_boot',
-    main: 'scene_main',
+    boot: 'boot',
+    main: 'main',
   },
 
   spritesheet: {
-    player: 'spritesheet_player',
+    player: 'player',
   },
 
   tilemap: {
-    map: 'tilemap_map',
+    map: 'map',
   },
 } as const;

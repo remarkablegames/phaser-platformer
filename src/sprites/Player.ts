@@ -2,20 +2,9 @@ import Phaser from 'phaser';
 
 import { key } from '../constants';
 
-enum Animation {
-  Left = 'Left',
-  Right = 'Right',
-  Turn = 'Turn',
-}
-
-enum Speed {
-  Horizontal = 160,
-  Rest = 0,
-  Vertical = 330,
-}
-
 export default class Player extends Phaser.Physics.Arcade.Sprite {
   private cursors: Phaser.Types.Input.Keyboard.CursorKeys;
+  body!: Phaser.Physics.Arcade.Body;
 
   constructor(
     scene: Phaser.Scene,
@@ -38,72 +27,63 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     // Create sprite animations
     this.createAnimations();
 
-    if (this.body instanceof Phaser.Physics.Arcade.Body) {
-      // Player physics properties
-      // Give the little guy some bounce
-      this.body.setBounceY(0.2).setCollideWorldBounds(true);
-    }
+    // Create the physics-based sprite that we will move around and animate
+    this.setDrag(1000, 0)
+      .setMaxVelocity(300, 400)
+      .setSize(18, 24)
+      .setOffset(7, 9);
+  }
+
+  freeze() {
+    this.body.moves = false;
   }
 
   private createAnimations() {
-    // Create left animation
-    this.anims.create({
-      key: Animation.Left,
-      frames: this.anims.generateFrameNumbers(key.spritesheet.player, {
-        start: 0,
-        end: 3,
-      }),
-      frameRate: 10,
+    // Create the animations we need from the player spritesheet
+    const anims = this.scene.anims;
+    anims.create({
+      key: 'player-idle',
+      frames: anims.generateFrameNumbers('player', { start: 0, end: 3 }),
+      frameRate: 3,
       repeat: -1,
     });
 
-    // Create turn animation
-    this.anims.create({
-      key: Animation.Turn,
-      frames: [{ key: key.spritesheet.player, frame: 4 }],
-      frameRate: 20,
-    });
-
-    // Create right animation
-    this.anims.create({
-      key: Animation.Right,
-      frames: this.anims.generateFrameNumbers(key.spritesheet.player, {
-        start: 5,
-        end: 8,
-      }),
-      frameRate: 10,
+    anims.create({
+      key: 'player-run',
+      frames: anims.generateFrameNumbers('player', { start: 8, end: 15 }),
+      frameRate: 12,
       repeat: -1,
     });
   }
 
   update() {
-    if (!(this.body instanceof Phaser.Physics.Arcade.Body)) {
-      return;
+    const acceleration = this.body.blocked.down ? 600 : 200;
+
+    // Apply horizontal acceleration when left/a or right/d are applied
+    if (this.cursors.left.isDown) {
+      this.setAccelerationX(-acceleration);
+      // No need to have a separate set of graphics for running to the left & to the right. Instead
+      // we can just mirror the sprite.
+      this.setFlipX(true);
+    } else if (this.cursors.right.isDown) {
+      this.setAccelerationX(acceleration);
+      this.setFlipX(false);
+    } else {
+      this.setAccelerationX(0);
     }
 
-    switch (true) {
-      // Move to the left
-      case this.cursors.left.isDown:
-        this.body.setVelocityX(-Speed.Horizontal);
-        this.anims.play(Animation.Left, true);
-        break;
-
-      // Move to the right
-      case this.cursors.right.isDown:
-        this.body.setVelocityX(Speed.Horizontal);
-        this.anims.play(Animation.Right, true);
-        break;
-
-      // Stand still
-      default:
-        this.body.setVelocityX(Speed.Rest);
-        this.anims.play(Animation.Turn);
-        break;
+    // Only allow the player to jump if they are on the ground
+    if (this.body.blocked.down && this.cursors.up.isDown) {
+      this.setVelocityY(-500);
     }
 
-    // Allow player to jump if sprite is on the ground
-    if (this.cursors.up.isDown && this.body.blocked.down) {
-      this.body.setVelocityY(-Speed.Vertical);
+    // Update the animation/texture based on the state of the player
+    if (this.body.blocked.down) {
+      if (this.body.velocity.x !== 0) this.anims.play('player-run', true);
+      else this.anims.play('player-idle', true);
+    } else {
+      this.anims.stop();
+      this.setTexture('player', 10);
     }
   }
 }
