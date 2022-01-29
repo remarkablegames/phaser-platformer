@@ -1,5 +1,6 @@
 {
   "backgroundcolor": "#1d212d",
+  "compressionlevel": -1,
   "height": 20,
   "infinite": false,
   "layers": [
@@ -178,7 +179,7 @@
   "nextobjectid": 6,
   "orientation": "orthogonal",
   "renderorder": "right-down",
-  "tiledversion": "1.2.2",
+  "tiledversion": "1.7.2",
   "tileheight": 32,
   "tilesets": [
     {
@@ -15581,6 +15582,6 @@
   ],
   "tilewidth": 32,
   "type": "map",
-  "version": 1.2,
+  "version": "1.6",
   "width": 40
 }
