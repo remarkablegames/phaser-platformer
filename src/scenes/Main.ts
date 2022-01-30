@@ -4,9 +4,9 @@ import { key } from '../constants';
 import { Player } from '../sprites';
 
 export default class Main extends Phaser.Scene {
-  private player!: Player;
-  private isPlayerDead = false;
   private groundLayer!: Phaser.Tilemaps.TilemapLayer;
+  private isPlayerDead!: boolean;
+  private player!: Player;
   private spikeGroup!: Phaser.Physics.Arcade.StaticGroup;
 
   constructor() {
@@ -33,15 +33,14 @@ export default class Main extends Phaser.Scene {
     );
     this.player = new Player(this, spawnPoint?.x || 0, spawnPoint?.y || 0);
 
-    // Collide the player against the ground layer - here we are grabbing the sprite property from
-    // the player (since the Player class is not a Phaser.Sprite).
+    // Collide the player against the ground layer
     this.groundLayer.setCollisionByProperty({ collides: true });
     this.physics.world.addCollider(this.player, this.groundLayer);
 
     // The map contains a row of spikes. The spike only take a small sliver of the tile graphic, so
     // if we let arcade physics treat the spikes as colliding, the player will collide while the
     // sprite is hovering over the spikes. We'll remove the spike tiles and turn them into sprites
-    // so that we give them a more fitting hitbox.
+    // so that we give them a more fitting hitbox
     this.spikeGroup = this.physics.add.staticGroup();
     this.groundLayer.forEachTile((tile) => {
       if (tile.index === 77) {
@@ -54,10 +53,13 @@ export default class Main extends Phaser.Scene {
         // The map has spikes rotated in Tiled (z key), so parse out that angle to the correct body
         // placement
         spike.rotation = tile.rotation;
-        if (spike.angle === 0) spike.body.setSize(32, 6).setOffset(0, 26);
-        else if (spike.angle === -90)
+        if (spike.angle === 0) {
+          spike.body.setSize(32, 6).setOffset(0, 26);
+        } else if (spike.angle === -90) {
           spike.body.setSize(6, 32).setOffset(26, 0);
-        else if (spike.angle === 90) spike.body.setSize(6, 32).setOffset(0, 0);
+        } else if (spike.angle === 90) {
+          spike.body.setSize(6, 32).setOffset(0, 0);
+        }
 
         this.groundLayer.removeTileAt(tile.x, tile.y);
       }

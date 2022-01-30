@@ -2,9 +2,14 @@ import Phaser from 'phaser';
 
 import { key } from '../constants';
 
+enum Animation {
+  PlayerIdle = 'player-idle',
+  PlayerRun = 'player-run',
+}
+
 export default class Player extends Phaser.Physics.Arcade.Sprite {
-  private cursors: Phaser.Types.Input.Keyboard.CursorKeys;
   body!: Phaser.Physics.Arcade.Body;
+  private cursors: Phaser.Types.Input.Keyboard.CursorKeys;
 
   constructor(
     scene: Phaser.Scene,
@@ -42,15 +47,21 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     // Create the animations we need from the player spritesheet
     const anims = this.scene.anims;
     anims.create({
-      key: 'player-idle',
-      frames: anims.generateFrameNumbers('player', { start: 0, end: 3 }),
+      key: Animation.PlayerIdle,
+      frames: anims.generateFrameNumbers(key.spritesheet.player, {
+        start: 0,
+        end: 3,
+      }),
       frameRate: 3,
       repeat: -1,
     });
 
     anims.create({
-      key: 'player-run',
-      frames: anims.generateFrameNumbers('player', { start: 8, end: 15 }),
+      key: Animation.PlayerRun,
+      frames: anims.generateFrameNumbers(key.spritesheet.player, {
+        start: 8,
+        end: 15,
+      }),
       frameRate: 12,
       repeat: -1,
     });
@@ -63,7 +74,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     if (this.cursors.left.isDown) {
       this.setAccelerationX(-acceleration);
       // No need to have a separate set of graphics for running to the left & to the right. Instead
-      // we can just mirror the sprite.
+      // we can just mirror the sprite
       this.setFlipX(true);
     } else if (this.cursors.right.isDown) {
       this.setAccelerationX(acceleration);
@@ -79,11 +90,14 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
     // Update the animation/texture based on the state of the player
     if (this.body.blocked.down) {
-      if (this.body.velocity.x !== 0) this.anims.play('player-run', true);
-      else this.anims.play('player-idle', true);
+      if (this.body.velocity.x !== 0) {
+        this.anims.play(Animation.PlayerRun, true);
+      } else {
+        this.anims.play(Animation.PlayerIdle, true);
+      }
     } else {
       this.anims.stop();
-      this.setTexture('player', 10);
+      this.setTexture(key.spritesheet.player, 10);
     }
   }
 }
