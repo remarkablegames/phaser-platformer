@@ -4,7 +4,7 @@ import spike from '../assets/images/0x72-industrial-spike.png';
 import player from '../assets/spritesheets/0x72-industrial-player-32px-extruded.png';
 import map from '../assets/tilemaps/platformer.json';
 import tiles from '../assets/tilesets/0x72-industrial-tileset-32px-extruded.png';
-import { key } from '../constants';
+import { key } from '../data';
 
 export default class Boot extends Phaser.Scene {
   constructor() {

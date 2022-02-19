@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 
-import { key } from '../constants';
+import { key } from '../data';
 import { Player } from '../sprites';
 
 export default class Main extends Phaser.Scene {
