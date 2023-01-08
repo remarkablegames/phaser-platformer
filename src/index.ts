@@ -11,7 +11,7 @@ new Phaser.Game({
   width: 1200,
   height: 600,
   title: 'Phaser Platformer',
-  url: 'https://remarkablegames.org/phaser-platformer/',
+  url: process.env.URL,
   version: process.env.VERSION,
   scene: scenes,
   physics: {
