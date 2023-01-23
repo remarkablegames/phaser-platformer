@@ -17,7 +17,10 @@ export default class Boot extends Scene {
     });
     this.load.image(key.image.spike, assets.images.spike);
     this.load.image(key.image.tiles, assets.tilesets.industrial);
-    this.load.tilemapTiledJSON(key.tilemap.map, assets.tilemaps.platformer);
+    this.load.tilemapTiledJSON(
+      key.tilemap.platformer,
+      assets.tilemaps.platformer
+    );
   }
 
   create() {

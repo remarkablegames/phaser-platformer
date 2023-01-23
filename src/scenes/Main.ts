@@ -16,7 +16,7 @@ export default class Main extends Phaser.Scene {
   create() {
     this.isPlayerDead = false;
 
-    const map = this.make.tilemap({ key: key.tilemap.map });
+    const map = this.make.tilemap({ key: key.tilemap.platformer });
     const tiles = map.addTilesetImage(
       '0x72-industrial-tileset-32px-extruded',
       key.image.tiles

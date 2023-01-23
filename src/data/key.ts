@@ -13,7 +13,7 @@ const spritesheet = {
 } as const;
 
 const tilemap = {
-  map: 'map',
+  platformer: 'platformer',
 } as const;
 
 export const key = {
