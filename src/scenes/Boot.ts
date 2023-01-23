@@ -1,26 +1,23 @@
-import Phaser from 'phaser';
+import { Scene } from 'phaser';
 
-import spike from '../assets/images/0x72-industrial-spike.png';
-import player from '../assets/spritesheets/0x72-industrial-player-32px-extruded.png';
-import map from '../assets/tilemaps/platformer.json';
-import tiles from '../assets/tilesets/0x72-industrial-tileset-32px-extruded.png';
+import * as assets from '../assets';
 import { key } from '../data';
 
-export default class Boot extends Phaser.Scene {
+export default class Boot extends Scene {
   constructor() {
     super({ key: key.scene.boot });
   }
 
   preload() {
-    this.load.spritesheet(key.spritesheet.player, player, {
+    this.load.spritesheet(key.spritesheet.player, assets.spritesheets.player, {
       frameWidth: 32,
       frameHeight: 32,
       margin: 1,
       spacing: 2,
     });
-    this.load.image(key.image.spike, spike);
-    this.load.image(key.image.tiles, tiles);
-    this.load.tilemapTiledJSON(key.tilemap.map, map);
+    this.load.image(key.image.spike, assets.images.spike);
+    this.load.image(key.image.tiles, assets.tilesets.industrial);
+    this.load.tilemapTiledJSON(key.tilemap.map, assets.tilemaps.platformer);
   }
 
   create() {
