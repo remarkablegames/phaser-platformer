@@ -10,7 +10,7 @@ export default class Main extends Phaser.Scene {
   private spikeGroup!: Phaser.Physics.Arcade.StaticGroup;
 
   constructor() {
-    super({ key: key.scene.main });
+    super(key.scene.main);
   }
 
   create() {
