@@ -5,7 +5,7 @@ import { Player } from '../sprites';
 
 export default class Main extends Phaser.Scene {
   private groundLayer!: Phaser.Tilemaps.TilemapLayer;
-  private isPlayerDead!: boolean;
+  private isPlayerDead = false;
   private player!: Player;
   private spikeGroup!: Phaser.Physics.Arcade.StaticGroup;
 
@@ -70,7 +70,7 @@ export default class Main extends Phaser.Scene {
 
     // Help text that has a "fixed" position on the screen
     this.add
-      .text(16, 16, 'Arrow/WASD to move & jump\nLeft click to draw platforms', {
+      .text(16, 16, 'Arrow to move & jump\nLeft click to draw platforms', {
         font: '18px monospace',
         color: '#000',
         padding: { x: 20, y: 10 },
