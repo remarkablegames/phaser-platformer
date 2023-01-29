@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 
 import { key } from '../data';
+import { TileMarker } from '../graphics';
 import { Player } from '../sprites';
 
 export default class Main extends Phaser.Scene {
@@ -8,6 +9,7 @@ export default class Main extends Phaser.Scene {
   private isPlayerDead = false;
   private player!: Player;
   private spikeGroup!: Phaser.Physics.Arcade.StaticGroup;
+  private tileMarker!: Phaser.GameObjects.Graphics;
 
   constructor() {
     super(key.scene.main);
@@ -68,6 +70,8 @@ export default class Main extends Phaser.Scene {
     this.cameras.main.startFollow(this.player);
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
+    this.tileMarker = new TileMarker(this, map);
+
     // Help text that has a "fixed" position on the screen
     this.add
       .text(16, 16, 'Arrow to move & jump\nLeft click to draw platforms', {
@@ -85,6 +89,7 @@ export default class Main extends Phaser.Scene {
     }
 
     this.player.update();
+    this.tileMarker.update();
 
     if (
       this.player.y > this.groundLayer.height ||
