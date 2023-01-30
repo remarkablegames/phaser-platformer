@@ -3,8 +3,8 @@ import Phaser from 'phaser';
 import { key } from '../data';
 
 enum Animation {
-  PlayerIdle = 'player-idle',
-  PlayerRun = 'player-run',
+  Idle = 'Idle',
+  Run = 'Run',
 }
 
 export default class Player extends Phaser.Physics.Arcade.Sprite {
@@ -47,7 +47,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     // Create the animations we need from the player spritesheet
     const anims = this.scene.anims;
     anims.create({
-      key: Animation.PlayerIdle,
+      key: Animation.Idle,
       frames: anims.generateFrameNumbers(key.spritesheet.player, {
         start: 0,
         end: 3,
@@ -57,7 +57,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     });
 
     anims.create({
-      key: Animation.PlayerRun,
+      key: Animation.Run,
       frames: anims.generateFrameNumbers(key.spritesheet.player, {
         start: 8,
         end: 15,
@@ -70,17 +70,22 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   update() {
     const acceleration = this.body.blocked.down ? 600 : 200;
 
-    // Apply horizontal acceleration when left/a or right/d are applied
-    if (this.cursors.left.isDown) {
-      this.setAccelerationX(-acceleration);
-      // No need to have a separate set of graphics for running to the left & to the right. Instead
-      // we can just mirror the sprite
-      this.setFlipX(true);
-    } else if (this.cursors.right.isDown) {
-      this.setAccelerationX(acceleration);
-      this.setFlipX(false);
-    } else {
-      this.setAccelerationX(0);
+    // Apply horizontal acceleration when left or right are applied
+    switch (true) {
+      case this.cursors.left.isDown:
+        // No need to have a separate set of graphics for running to the left & to the right
+        // Instead we can just mirror the sprite
+        this.setFlipX(true);
+        this.setAccelerationX(-acceleration);
+        break;
+
+      case this.cursors.right.isDown:
+        this.setFlipX(false);
+        this.setAccelerationX(acceleration);
+        break;
+
+      default:
+        this.setAccelerationX(0);
     }
 
     // Only allow the player to jump if they are on the ground
@@ -90,11 +95,10 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
     // Update the animation/texture based on the state of the player
     if (this.body.blocked.down) {
-      if (this.body.velocity.x !== 0) {
-        this.anims.play(Animation.PlayerRun, true);
-      } else {
-        this.anims.play(Animation.PlayerIdle, true);
-      }
+      this.anims.play(
+        this.body.velocity.x ? Animation.Run : Animation.Idle,
+        true
+      );
     } else {
       this.anims.stop();
       this.setTexture(key.spritesheet.player, 10);
