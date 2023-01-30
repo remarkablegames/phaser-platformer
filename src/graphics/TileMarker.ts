@@ -37,11 +37,12 @@ export default class TileMarker extends Phaser.GameObjects.Graphics {
     );
     this.setPosition(snappedWorldPoint.x, snappedWorldPoint.y);
 
+    // When mouse is down, put a colliding tile at the mouse location
     // Draw or erase tiles (only within the groundLayer)
     const { activePointer } = this.scene.input.manager;
     if (activePointer.leftButtonDown()) {
       this.groundLayer
-        .putTileAtWorldXY(353, worldPoint.x, worldPoint.y)
+        .putTileAtWorldXY(6, worldPoint.x, worldPoint.y)
         .setCollision(true);
     } else if (activePointer.rightButtonDown()) {
       this.groundLayer.removeTileAtWorldXY(worldPoint.x, worldPoint.y);
