@@ -23,9 +23,13 @@ export default class TileMarker extends Phaser.GameObjects.Graphics {
   }
 
   update() {
+    // Convert the mouse position to world position within the camera
     const worldPoint = this.scene.input.activePointer.positionToCamera(
       this.scene.cameras.main
     ) as Phaser.Math.Vector2;
+
+    // Place the marker in world space, but snap it to the tile grid. If we convert world -> tile and
+    // then tile -> world, we end up with the position of the tile under the pointer
     const pointerTileXY = this.map.worldToTileXY(worldPoint.x, worldPoint.y);
     const snappedWorldPoint = this.map.tileToWorldXY(
       pointerTileXY.x,
@@ -34,10 +38,13 @@ export default class TileMarker extends Phaser.GameObjects.Graphics {
     this.setPosition(snappedWorldPoint.x, snappedWorldPoint.y);
 
     // Draw or erase tiles (only within the groundLayer)
-    if (this.scene.input.manager.activePointer.isDown) {
+    const { activePointer } = this.scene.input.manager;
+    if (activePointer.leftButtonDown()) {
       this.groundLayer
         .putTileAtWorldXY(353, worldPoint.x, worldPoint.y)
         .setCollision(true);
+    } else if (activePointer.rightButtonDown()) {
+      this.groundLayer.removeTileAtWorldXY(worldPoint.x, worldPoint.y);
     }
   }
 }

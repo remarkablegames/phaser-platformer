@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 
 import scenes from './scenes';
-import { isDevelopment, isProduction } from './utils';
+import { isDevelopment } from './utils';
 
 /**
  * https://photonstorm.github.io/phaser3-docs/Phaser.Types.Core.html#.GameConfig
@@ -22,7 +22,7 @@ new Phaser.Game({
       debug: isDevelopment,
     },
   },
-  disableContextMenu: isProduction,
+  disableContextMenu: true,
   backgroundColor: '#1d212d',
   scale: {
     mode: Phaser.Scale.FIT,
