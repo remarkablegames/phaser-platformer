@@ -78,9 +78,9 @@ export default class Main extends Phaser.Scene {
         16,
         16,
         [
-          'Arrow keys to move & jump',
+          'WASD or arrow keys to move & jump',
           'Left-click to draw tiles',
-          'Right-click to erase',
+          'Right-click to erase tiles',
         ].join('\n'),
         {
           font: '18px monospace',

@@ -7,9 +7,14 @@ enum Animation {
   Run = 'Run',
 }
 
+type Cursors = Record<
+  'w' | 'a' | 's' | 'd' | 'up' | 'left' | 'down' | 'right',
+  Phaser.Input.Keyboard.Key
+>;
+
 export default class Player extends Phaser.Physics.Arcade.Sprite {
   body!: Phaser.Physics.Arcade.Body;
-  private cursors: Phaser.Types.Input.Keyboard.CursorKeys;
+  private cursors: Cursors;
 
   constructor(
     scene: Phaser.Scene,
@@ -21,7 +26,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     super(scene, x, y, texture, frame);
 
     // Add cursor keys
-    this.cursors = scene.input.keyboard.createCursorKeys();
+    this.cursors = this.createCursorKeys();
 
     // Create sprite animations
     this.createAnimations();
@@ -42,6 +47,12 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
     // Add the sprite to the scene
     this.scene.add.existing(this);
+  }
+
+  private createCursorKeys() {
+    return this.scene.input.keyboard.addKeys(
+      'w,a,s,d,up,left,down,right'
+    ) as Cursors;
   }
 
   private createAnimations() {
@@ -78,6 +89,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     // Apply horizontal acceleration when left or right are applied
     switch (true) {
       case this.cursors.left.isDown:
+      case this.cursors.a.isDown:
         // No need to have a separate set of graphics for running to the left & to the right
         // Instead we can just mirror the sprite
         this.setFlipX(true);
@@ -85,6 +97,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         break;
 
       case this.cursors.right.isDown:
+      case this.cursors.d.isDown:
         this.setFlipX(false);
         this.setAccelerationX(acceleration);
         break;
@@ -94,7 +107,10 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     }
 
     // Only allow the player to jump if they are on the ground
-    if (this.body.blocked.down && this.cursors.up.isDown) {
+    if (
+      this.body.blocked.down &&
+      (this.cursors.up.isDown || this.cursors.w.isDown)
+    ) {
       this.setVelocityY(-500);
     }
 
