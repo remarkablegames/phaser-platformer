@@ -74,12 +74,21 @@ export default class Main extends Phaser.Scene {
 
     // Help text that has a "fixed" position on the screen
     this.add
-      .text(16, 16, 'Arrow to move & jump\nLeft click to draw platforms', {
-        font: '18px monospace',
-        color: '#000',
-        padding: { x: 20, y: 10 },
-        backgroundColor: '#fff',
-      })
+      .text(
+        16,
+        16,
+        [
+          'Arrow keys to move & jump',
+          'Left-click to draw tiles',
+          'Right-click to erase',
+        ].join('\n'),
+        {
+          font: '18px monospace',
+          color: '#000',
+          padding: { x: 20, y: 10 },
+          backgroundColor: '#fff',
+        }
+      )
       .setScrollFactor(0);
   }
 
