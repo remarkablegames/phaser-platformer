@@ -1,12 +1,17 @@
 import Phaser from 'phaser';
 
 export default class TileMarker extends Phaser.GameObjects.Graphics {
-  body!: Phaser.Physics.Arcade.Body;
-  map!: Phaser.Tilemaps.Tilemap;
+  private map!: Phaser.Tilemaps.Tilemap;
+  private groundLayer!: Phaser.Tilemaps.TilemapLayer;
 
-  constructor(scene: Phaser.Scene, map: Phaser.Tilemaps.Tilemap) {
+  constructor(
+    scene: Phaser.Scene,
+    map: Phaser.Tilemaps.Tilemap,
+    groundLayer: Phaser.Tilemaps.TilemapLayer
+  ) {
     super(scene);
     this.map = map;
+    this.groundLayer = groundLayer;
 
     this.lineStyle(5, 0xffffff, 1);
     this.strokeRect(0, 0, map.tileWidth, map.tileHeight);
@@ -27,5 +32,12 @@ export default class TileMarker extends Phaser.GameObjects.Graphics {
       pointerTileXY.y
     );
     this.setPosition(snappedWorldPoint.x, snappedWorldPoint.y);
+
+    // Draw or erase tiles (only within the groundLayer)
+    if (this.scene.input.manager.activePointer.isDown) {
+      this.groundLayer
+        .putTileAtWorldXY(353, worldPoint.x, worldPoint.y)
+        .setCollision(true);
+    }
   }
 }

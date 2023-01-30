@@ -70,7 +70,7 @@ export default class Main extends Phaser.Scene {
     this.cameras.main.startFollow(this.player);
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
-    this.tileMarker = new TileMarker(this, map);
+    this.tileMarker = new TileMarker(this, map, this.groundLayer);
 
     // Help text that has a "fixed" position on the screen
     this.add
