@@ -20,27 +20,28 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   ) {
     super(scene, x, y, texture, frame);
 
-    // Add the sprite to the scene
-    scene.add.existing(this);
-
-    // Enable physics for the sprite
-    scene.physics.world.enable(this);
-
     // Add cursor keys
     this.cursors = scene.input.keyboard.createCursorKeys();
 
     // Create sprite animations
     this.createAnimations();
 
+    // Enable sprite physics
+    this.enablePhysics();
+  }
+
+  private enablePhysics() {
+    // Enable physics for the sprite
+    this.scene.physics.world.enable(this);
+
     // Create the physics-based sprite that we will move around and animate
     this.setDrag(1000, 0)
       .setMaxVelocity(300, 400)
       .setSize(18, 24)
       .setOffset(7, 9);
-  }
 
-  freeze() {
-    this.body.moves = false;
+    // Add the sprite to the scene
+    this.scene.add.existing(this);
   }
 
   private createAnimations() {
@@ -65,6 +66,10 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       frameRate: 12,
       repeat: -1,
     });
+  }
+
+  freeze() {
+    this.body.moves = false;
   }
 
   update() {
