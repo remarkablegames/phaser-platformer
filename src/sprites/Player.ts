@@ -50,7 +50,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   }
 
   private createCursorKeys() {
-    return this.scene.input.keyboard.addKeys(
+    return this.scene.input.keyboard!.addKeys(
       'w,a,s,d,up,left,down,right'
     ) as Cursors;
   }

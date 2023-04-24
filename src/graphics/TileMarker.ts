@@ -30,11 +30,11 @@ export default class TileMarker extends Phaser.GameObjects.Graphics {
 
     // Place the marker in world space, but snap it to the tile grid. If we convert world -> tile and
     // then tile -> world, we end up with the position of the tile under the pointer
-    const pointerTileXY = this.map.worldToTileXY(worldPoint.x, worldPoint.y);
+    const pointerTileXY = this.map.worldToTileXY(worldPoint.x, worldPoint.y)!;
     const snappedWorldPoint = this.map.tileToWorldXY(
       pointerTileXY.x,
       pointerTileXY.y
-    );
+    )!;
     this.setPosition(snappedWorldPoint.x, snappedWorldPoint.y);
 
     // When mouse is down, put a colliding tile at the mouse location
