@@ -7,7 +7,7 @@ export default class TileMarker extends Phaser.GameObjects.Graphics {
   constructor(
     scene: Phaser.Scene,
     map: Phaser.Tilemaps.Tilemap,
-    groundLayer: Phaser.Tilemaps.TilemapLayer
+    groundLayer: Phaser.Tilemaps.TilemapLayer,
   ) {
     super(scene);
     this.map = map;
@@ -25,7 +25,7 @@ export default class TileMarker extends Phaser.GameObjects.Graphics {
   update() {
     // Convert the mouse position to world position within the camera
     const worldPoint = this.scene.input.activePointer.positionToCamera(
-      this.scene.cameras.main
+      this.scene.cameras.main,
     ) as Phaser.Math.Vector2;
 
     // Place the marker in world space, but snap it to the tile grid. If we convert world -> tile and
@@ -33,7 +33,7 @@ export default class TileMarker extends Phaser.GameObjects.Graphics {
     const pointerTileXY = this.map.worldToTileXY(worldPoint.x, worldPoint.y)!;
     const snappedWorldPoint = this.map.tileToWorldXY(
       pointerTileXY.x,
-      pointerTileXY.y
+      pointerTileXY.y,
     )!;
     this.setPosition(snappedWorldPoint.x, snappedWorldPoint.y);
 

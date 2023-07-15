@@ -21,7 +21,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     x: number,
     y: number,
     texture = key.spritesheet.player,
-    frame = 0
+    frame = 0,
   ) {
     super(scene, x, y, texture, frame);
 
@@ -51,7 +51,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
   private createCursorKeys() {
     return this.scene.input.keyboard!.addKeys(
-      'w,a,s,d,up,left,down,right'
+      'w,a,s,d,up,left,down,right',
     ) as Cursors;
   }
 
@@ -118,7 +118,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     if (this.body.blocked.down) {
       this.anims.play(
         this.body.velocity.x ? Animation.Run : Animation.Idle,
-        true
+        true,
       );
     } else {
       this.anims.stop();

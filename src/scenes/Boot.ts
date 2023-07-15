@@ -19,7 +19,7 @@ export default class Boot extends Scene {
     this.load.image(key.image.tiles, assets.tilesets.industrial);
     this.load.tilemapTiledJSON(
       key.tilemap.platformer,
-      assets.tilemaps.platformer
+      assets.tilemaps.platformer,
     );
   }
 

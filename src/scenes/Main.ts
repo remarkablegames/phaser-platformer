@@ -21,7 +21,7 @@ export default class Main extends Phaser.Scene {
     const map = this.make.tilemap({ key: key.tilemap.platformer });
     const tiles = map.addTilesetImage(
       '0x72-industrial-tileset-32px-extruded',
-      key.image.tiles
+      key.image.tiles,
     )!;
 
     map.createLayer('Background', tiles);
@@ -31,7 +31,7 @@ export default class Main extends Phaser.Scene {
     // Instantiate a player instance at the location of the "Spawn Point" object in the Tiled map
     const spawnPoint = map.findObject(
       'Objects',
-      (obj) => obj.name === 'Spawn Point'
+      (obj) => obj.name === 'Spawn Point',
     );
     this.player = new Player(this, spawnPoint?.x || 0, spawnPoint?.y || 0);
 
@@ -49,7 +49,7 @@ export default class Main extends Phaser.Scene {
         const spike = this.spikeGroup.create(
           tile.getCenterX(),
           tile.getCenterY(),
-          key.image.spike
+          key.image.spike,
         );
 
         // The map has spikes rotated in Tiled (z key), so parse out that angle to the correct body
@@ -87,7 +87,7 @@ export default class Main extends Phaser.Scene {
           color: '#000',
           padding: { x: 20, y: 10 },
           backgroundColor: '#fff',
-        }
+        },
       )
       .setScrollFactor(0);
   }
