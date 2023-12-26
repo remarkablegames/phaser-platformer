@@ -41,9 +41,13 @@ export default class TileMarker extends Phaser.GameObjects.Graphics {
     // Draw or erase tiles (only within the groundLayer)
     const { activePointer } = this.scene.input.manager;
     if (activePointer.leftButtonDown()) {
-      this.groundLayer
-        .putTileAtWorldXY(6, worldPoint.x, worldPoint.y)
-        .setCollision(true);
+      try {
+        this.groundLayer
+          .putTileAtWorldXY(6, worldPoint.x, worldPoint.y)
+          .setCollision(true);
+      } catch (error) {
+        // don't draw tile if outside of game world
+      }
     } else if (activePointer.rightButtonDown()) {
       this.groundLayer.removeTileAtWorldXY(worldPoint.x, worldPoint.y);
     }
