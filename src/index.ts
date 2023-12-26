@@ -1,7 +1,6 @@
 import Phaser from 'phaser';
 
 import scenes from './scenes';
-import { isDevelopment } from './utils';
 
 /**
  * https://photonstorm.github.io/phaser3-docs/Phaser.Types.Core.html#.GameConfig
@@ -10,8 +9,8 @@ new Phaser.Game({
   width: 1200, // 1024
   height: 600, // 768
   title: 'Phaser Platformer',
-  url: process.env.URL,
-  version: process.env.VERSION,
+  url: import.meta.env.VITE_APP_HOMEPAGE,
+  version: import.meta.env.VITE_APP_VERSION,
   scene: scenes,
   physics: {
     default: 'arcade',
@@ -19,10 +18,10 @@ new Phaser.Game({
       gravity: {
         y: 1000,
       },
-      debug: isDevelopment,
+      debug: import.meta.env.DEV,
     },
   },
-  disableContextMenu: true,
+  disableContextMenu: import.meta.env.PROD,
   backgroundColor: '#1d212d',
   scale: {
     mode: Phaser.Scale.FIT,
