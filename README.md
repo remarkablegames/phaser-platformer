@@ -68,7 +68,7 @@ Your game is ready to be deployed!
 
 ## Upload
 
-Open `public/index.html` and remove the GitHub Corners script.
+Open `index.html` and remove the GitHub Corners script.
 
 Build the game artifacts:
 
