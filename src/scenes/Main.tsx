@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import { render, Text } from 'phaser-jsx';
 
 import { key } from '../data';
 import { TileMarker } from '../graphics';
@@ -6,10 +7,11 @@ import { Player } from '../sprites';
 
 export default class Main extends Phaser.Scene {
   private groundLayer!: Phaser.Tilemaps.TilemapLayer;
-  private isPlayerDead = false;
   private player!: Player;
   private spikeGroup!: Phaser.Physics.Arcade.StaticGroup;
   private tileMarker!: Phaser.GameObjects.Graphics;
+
+  private isPlayerDead = false;
 
   constructor() {
     super(key.scene.main);
@@ -73,23 +75,28 @@ export default class Main extends Phaser.Scene {
     this.tileMarker = new TileMarker(this, map, this.groundLayer);
 
     // Help text that has a "fixed" position on the screen
-    this.add
-      .text(
-        16,
-        16,
-        [
+    render(
+      <Text
+        x={16}
+        y={16}
+        text={[
           'WASD or arrow keys to move & jump',
           'Left-click to draw tiles',
           'Right-click to erase tiles',
-        ].join('\n'),
-        {
-          font: '18px monospace',
+        ].join('\n')}
+        style={{
           color: '#000',
-          padding: { x: 20, y: 10 },
+          fontFamily: 'monospace',
+          fontSize: '18px ',
           backgroundColor: '#fff',
-        },
-      )
-      .setScrollFactor(0);
+          // @ts-expect-error padding
+          padding: { x: 20, y: 10 },
+        }}
+        scrollFactorX={0}
+        scrollFactorY={0}
+      />,
+      this,
+    );
   }
 
   update() {
