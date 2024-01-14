@@ -1,15 +1,6 @@
 html,
 body {
+  background: #000;
   margin: 0;
   padding: 0;
-}
-
-/* GitHub Corners */
-.github-corner > svg {
-  opacity: 0.5;
-  transition: opacity 0.4s;
-}
-
-.github-corner:hover > svg {
-  opacity: 1;
 }
