@@ -6,7 +6,7 @@ Inspired by [`phaser-3-tilemap-blog-posts`](https://github.com/mikewesthad/phase
 
 Demo:
 
-- [Remarkablegames](https://remarkablegames.org/phaser-platformer)
+- [remarkablegames](https://remarkablegames.org/phaser-platformer)
 
 Stack:
 
