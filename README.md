@@ -2,16 +2,17 @@
 
 <kbd>phaser-platformer</kbd> is a template for making [Phaser](https://phaser.io/) platformer games.
 
-The template is based off of [`phaser-template`](https://github.com/remarkablegames/phaser-template).
+Inspired by [`phaser-3-tilemap-blog-posts`](https://github.com/mikewesthad/phaser-3-tilemap-blog-posts/tree/master/examples/post-2) (see [Medium story](https://itnext.io/3d68e73d494a)).
 
-The example is inspired by [`phaser-3-tilemap-blog-posts`](https://github.com/mikewesthad/phaser-3-tilemap-blog-posts/tree/master/examples/post-2) (see [Medium story](https://itnext.io/3d68e73d494a)).
+Demo:
 
-[Play the demo.](https://remarkablegames.org/phaser-platformer)
+- [Remarkablegames](https://remarkablegames.org/phaser-platformer)
 
-The template is built with:
+Stack:
 
-- [GitHub Pages](https://pages.github.com/)
+- [Phaser](https://phaser.io/)
 - [Vite](https://vitejs.dev/)
+- [GitHub Pages](https://pages.github.com/)
 
 ## Prerequisites
 
