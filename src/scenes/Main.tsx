@@ -32,8 +32,8 @@ export default class Main extends Phaser.Scene {
     const spawnPoint = map.findObject(
       TilemapLayer.Objects,
       ({ name }) => name === TilemapObject.SpawnPoint,
-    );
-    this.player = new Player(this, spawnPoint?.x || 0, spawnPoint?.y || 0);
+    )!;
+    this.player = new Player(this, spawnPoint.x!, spawnPoint.y!);
 
     // Collide the player against the ground layer
     this.groundLayer.setCollisionByProperty({ collides: true });
