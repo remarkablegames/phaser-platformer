@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 import { render } from 'phaser-jsx';
 
 import { HelpText } from '../components';
+import { Tile, TilemapLayer, TilemapObject, TILESET_NAME } from '../constants';
 import { key } from '../data';
 import { TileMarker } from '../graphics';
 import { Player } from '../sprites';
@@ -11,7 +12,6 @@ export default class Main extends Phaser.Scene {
   private player!: Player;
   private spikeGroup!: Phaser.Physics.Arcade.StaticGroup;
   private tileMarker!: Phaser.GameObjects.Graphics;
-
   private isPlayerDead = false;
 
   constructor() {
@@ -22,19 +22,16 @@ export default class Main extends Phaser.Scene {
     this.isPlayerDead = false;
 
     const map = this.make.tilemap({ key: key.tilemap.platformer });
-    const tiles = map.addTilesetImage(
-      '0x72-industrial-tileset-32px-extruded',
-      key.image.tiles,
-    )!;
+    const tiles = map.addTilesetImage(TILESET_NAME, key.image.tiles)!;
 
-    map.createLayer('Background', tiles);
-    this.groundLayer = map.createLayer('Ground', tiles)!;
-    map.createLayer('Foreground', tiles);
+    map.createLayer(TilemapLayer.Background, tiles);
+    this.groundLayer = map.createLayer(TilemapLayer.Ground, tiles)!;
+    map.createLayer(TilemapLayer.Foreground, tiles);
 
     // Instantiate a player instance at the location of the "Spawn Point" object in the Tiled map
     const spawnPoint = map.findObject(
-      'Objects',
-      (obj) => obj.name === 'Spawn Point',
+      TilemapLayer.Objects,
+      ({ name }) => name === TilemapObject.SpawnPoint,
     );
     this.player = new Player(this, spawnPoint?.x || 0, spawnPoint?.y || 0);
 
@@ -48,7 +45,7 @@ export default class Main extends Phaser.Scene {
     // so that we give them a more fitting hitbox
     this.spikeGroup = this.physics.add.staticGroup();
     this.groundLayer.forEachTile((tile) => {
-      if (tile.index === 77) {
+      if (tile.index === Tile.Spike) {
         const spike = this.spikeGroup.create(
           tile.getCenterX(),
           tile.getCenterY(),
