@@ -25,7 +25,7 @@ new Phaser.Game({
       debug: import.meta.env.DEV,
     },
   },
-  disableContextMenu: import.meta.env.PROD,
+  disableContextMenu: true,
   backgroundColor: '#1d212d',
   scale: {
     mode: Phaser.Scale.FIT,
