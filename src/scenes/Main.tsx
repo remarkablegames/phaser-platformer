@@ -2,8 +2,13 @@ import Phaser from 'phaser';
 import { render } from 'phaser-jsx';
 
 import { HelpText } from '../components';
-import { Tile, TilemapLayer, TilemapObject, TILESET_NAME } from '../constants';
-import { key } from '../data';
+import {
+  key,
+  Tile,
+  TilemapLayer,
+  TilemapObject,
+  TILESET_NAME,
+} from '../constants';
 import { TileMarker } from '../graphics';
 import { Player } from '../sprites';
 
