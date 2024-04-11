@@ -16,7 +16,7 @@ export function HelpText() {
       style={{
         color: '#000',
         fontFamily: 'monospace',
-        fontSize: '18px ',
+        fontSize: '18px',
         backgroundColor: '#fff',
         // @ts-expect-error padding
         padding: { x: 20, y: 10 },
