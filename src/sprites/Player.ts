@@ -12,7 +12,7 @@ type Cursors = Record<
   Phaser.Input.Keyboard.Key
 >;
 
-export default class Player extends Phaser.Physics.Arcade.Sprite {
+export class Player extends Phaser.Physics.Arcade.Sprite {
   body!: Phaser.Physics.Arcade.Body;
   private cursors: Cursors;
 
