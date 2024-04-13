@@ -27,11 +27,11 @@ export class Main extends Phaser.Scene {
     this.isPlayerDead = false;
 
     const map = this.make.tilemap({ key: key.tilemap.platformer });
-    const tiles = map.addTilesetImage(TILESET_NAME, key.image.tiles)!;
+    const tileset = map.addTilesetImage(TILESET_NAME, key.image.tiles)!;
 
-    map.createLayer(TilemapLayer.Background, tiles);
-    this.groundLayer = map.createLayer(TilemapLayer.Ground, tiles)!;
-    map.createLayer(TilemapLayer.Foreground, tiles);
+    map.createLayer(TilemapLayer.Background, tileset);
+    this.groundLayer = map.createLayer(TilemapLayer.Ground, tileset)!;
+    map.createLayer(TilemapLayer.Foreground, tileset);
 
     // Instantiate a player instance at the location of the "Spawn Point" object in the Tiled map
     const spawnPoint = map.findObject(

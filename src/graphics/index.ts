@@ -1,1 +1,1 @@
-export { default as TileMarker } from './TileMarker';
+export * from './TileMarker';

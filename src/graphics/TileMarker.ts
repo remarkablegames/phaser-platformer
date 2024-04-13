@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 
-export default class TileMarker extends Phaser.GameObjects.Graphics {
+export class TileMarker extends Phaser.GameObjects.Graphics {
   private map!: Phaser.Tilemaps.Tilemap;
   private groundLayer!: Phaser.Tilemaps.TilemapLayer;
 
