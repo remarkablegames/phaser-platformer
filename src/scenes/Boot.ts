@@ -15,8 +15,11 @@ export class Boot extends Scene {
       margin: 1,
       spacing: 2,
     });
+
     this.load.image(key.image.spike, assets.images.spike);
-    this.load.image(key.image.tiles, assets.tilesets.industrial);
+
+    this.load.image(key.image.tiles, assets.tilemaps.industrial);
+
     this.load.tilemapTiledJSON(
       key.tilemap.platformer,
       assets.tilemaps.platformer,

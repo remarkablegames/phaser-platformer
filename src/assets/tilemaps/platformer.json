@@ -193,7 +193,7 @@
     {
       "columns": 32,
       "firstgid": 1,
-      "image": "../tilesets/0x72-industrial-tileset-32px-extruded.png",
+      "image": "0x72-industrial-tileset-32px-extruded.png",
       "imageheight": 1088,
       "imagewidth": 1088,
       "margin": 1,

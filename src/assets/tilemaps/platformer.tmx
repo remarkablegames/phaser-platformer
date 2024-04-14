@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="40" height="20" tilewidth="32" tileheight="32" infinite="0" backgroundcolor="#1d212d" nextlayerid="5" nextobjectid="7">
  <tileset firstgid="1" name="0x72-industrial-tileset-32px-extruded" tilewidth="32" tileheight="32" spacing="2" margin="1" tilecount="1024" columns="32">
-  <image source="../tilesets/0x72-industrial-tileset-32px-extruded.png" width="1088" height="1088"/>
+  <image source="0x72-industrial-tileset-32px-extruded.png" width="1088" height="1088"/>
   <tile id="0">
    <properties>
     <property name="collides" type="bool" value="false"/>
