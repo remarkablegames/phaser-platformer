@@ -3,8 +3,8 @@ import Phaser from 'phaser';
 import { key } from '../constants';
 
 enum Animation {
-  Idle = 'Idle',
-  Run = 'Run',
+  Idle = 'PlayerIdle',
+  Run = 'PlayerRun',
 }
 
 type Cursors = Record<
