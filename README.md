@@ -1,18 +1,14 @@
-# phaser-platformer
+<p align="center">
+  <img src="https://github.com/remarkablegames/phaser-platformer/blob/master/public/logo192.png" alt="Phaser Platformer">
+</p>
 
-<kbd>phaser-platformer</kbd> is a template for making [Phaser](https://phaser.io/) platformer games.
+# Phaser Platformer
 
-Inspired by [`phaser-3-tilemap-blog-posts`](https://github.com/mikewesthad/phaser-3-tilemap-blog-posts/tree/master/examples/post-2) (see [Medium story](https://itnext.io/3d68e73d494a)).
+<kbd>phaser-platformer</kbd> is a template for making [Phaser](https://phaser.io/) platformer games. The template is inspired by [`phaser-3-tilemap-blog-posts`](https://github.com/mikewesthad/phaser-3-tilemap-blog-posts/tree/master/examples/post-2) (read the [Medium story](https://itnext.io/3d68e73d494a)).
 
-Demo:
+Play the game on:
 
-- [remarkablegames](https://remarkablegames.org/phaser-platformer)
-
-Stack:
-
-- [Phaser](https://phaser.io/)
-- [Vite](https://vitejs.dev/)
-- [GitHub Pages](https://pages.github.com/)
+- [remarkablegames](https://remarkablegames.org/phaser-platformer/)
 
 ## Prerequisites
 
@@ -32,6 +28,21 @@ Install the dependencies:
 ```sh
 npm install
 ```
+
+Rename the project:
+
+```sh
+git grep -l phaser-platformer | xargs sed -i '' -e 's/phaser-platformer/my-game/g'
+git grep -l 'Phaser Platformer' | xargs sed -i '' -e 's/Phaser Platformer/My Game/g'
+```
+
+Update the files:
+
+- [ ] `README.md`
+- [ ] `package.json`
+- [ ] `index.html`
+- [ ] `public/manifest.json`
+- [ ] `src/index.ts`
 
 ## Environment Variables
 
