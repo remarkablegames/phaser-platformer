@@ -4,6 +4,9 @@
 
 # Phaser Platformer
 
+[![release](https://img.shields.io/github/v/release/remarkablegames/phaser-platformer)](https://github.com/remarkablegames/phaser-platformer/releases)
+[![build](https://github.com/remarkablegames/phaser-platformer/actions/workflows/build.yml/badge.svg)](https://github.com/remarkablegames/phaser-platformer/actions/workflows/build.yml)
+
 <kbd>phaser-platformer</kbd> is a template for making [Phaser](https://phaser.io/) platformer games. The template is inspired by [`phaser-3-tilemap-blog-posts`](https://github.com/mikewesthad/phaser-3-tilemap-blog-posts/tree/master/examples/post-2) (read the [Medium story](https://itnext.io/3d68e73d494a)).
 
 Play the game on:
