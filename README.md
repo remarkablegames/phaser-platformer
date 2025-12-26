@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/remarkablegames/phaser-platformer/blob/master/public/logo192.png" alt="Phaser Platformer">
+  <img src="public/logo192.png" alt="Phaser Platformer">
 </p>
 
 # Phaser Platformer
