@@ -1,11 +1,11 @@
-import Phaser from 'phaser';
+import { Game, Scale } from 'phaser';
 
 import * as scenes from './scenes';
 
 /**
  * https://rexrainbow.github.io/phaser3-rex-notes/docs/site/game/
  */
-new Phaser.Game({
+new Game({
   width: 1200, // 1024
   height: 600, // 768
   title: 'Phaser Platformer',
@@ -28,8 +28,8 @@ new Phaser.Game({
   disableContextMenu: true,
   backgroundColor: '#1d212d',
   scale: {
-    mode: Phaser.Scale.FIT,
-    autoCenter: Phaser.Scale.CENTER_BOTH,
+    mode: Scale.FIT,
+    autoCenter: Scale.CENTER_BOTH,
   },
   pixelArt: true,
 });
