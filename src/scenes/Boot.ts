@@ -10,7 +10,7 @@ export class Boot extends Scene {
   preload() {
     this.load.spritesheet(
       KEY.SPRITESHEET.PLAYER,
-      '/sprites/0x72-industrial-player-32px-extruded.png',
+      'sprites/0x72-industrial-player-32px-extruded.png',
       {
         frameWidth: 32,
         frameHeight: 32,
@@ -19,16 +19,16 @@ export class Boot extends Scene {
       },
     );
 
-    this.load.image(KEY.IMAGE.SPIKE, '/sprites/0x72-industrial-spike.png');
+    this.load.image(KEY.IMAGE.SPIKE, 'sprites/0x72-industrial-spike.png');
 
     this.load.image(
       KEY.IMAGE.TILES,
-      '/tilemaps/0x72-industrial-tileset-32px-extruded.png',
+      'tilemaps/0x72-industrial-tileset-32px-extruded.png',
     );
 
     this.load.tilemapTiledJSON(
       KEY.TILEMAP.PLATFORMER,
-      '/tilemaps/platformer.json',
+      'tilemaps/platformer.json',
     );
   }
 
