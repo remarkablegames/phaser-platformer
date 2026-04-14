@@ -1,24 +1,17 @@
-const image = {
-  spike: 'spike',
-  tiles: 'tiles',
+export const IMAGE = {
+  SPIKE: 'SPIKE',
+  TILES: 'TILES',
 } as const;
 
-const scene = {
-  boot: 'boot',
-  main: 'main',
+export const SCENE = {
+  BOOT: 'BOOT',
+  MAIN: 'MAIN',
 } as const;
 
-const spritesheet = {
-  player: 'player',
+export const SPRITESHEET = {
+  PLAYER: 'PLAYER',
 } as const;
 
-const tilemap = {
-  platformer: 'platformer',
-} as const;
-
-export const key = {
-  image,
-  scene,
-  spritesheet,
-  tilemap,
+export const TILEMAP = {
+  PLATFORMER: 'PLATFORMER',
 } as const;

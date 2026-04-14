@@ -1,32 +1,32 @@
 import { Scene } from 'phaser';
 
 import * as assets from '../assets';
-import { key } from '../constants';
+import { KEY } from '../constants';
 
 export class Boot extends Scene {
   constructor() {
-    super(key.scene.boot);
+    super(KEY.SCENE.BOOT);
   }
 
   preload() {
-    this.load.spritesheet(key.spritesheet.player, assets.spritesheets.player, {
+    this.load.spritesheet(KEY.SPRITESHEET.PLAYER, assets.spritesheets.player, {
       frameWidth: 32,
       frameHeight: 32,
       margin: 1,
       spacing: 2,
     });
 
-    this.load.image(key.image.spike, assets.images.spike);
+    this.load.image(KEY.IMAGE.SPIKE, assets.images.spike);
 
-    this.load.image(key.image.tiles, assets.tilemaps.industrial);
+    this.load.image(KEY.IMAGE.TILES, assets.tilemaps.industrial);
 
     this.load.tilemapTiledJSON(
-      key.tilemap.platformer,
+      KEY.TILEMAP.PLATFORMER,
       assets.tilemaps.platformer,
     );
   }
 
   create() {
-    this.scene.start(key.scene.main);
+    this.scene.start(KEY.SCENE.MAIN);
   }
 }

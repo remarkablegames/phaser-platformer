@@ -3,7 +3,7 @@ import { render } from 'phaser-jsx';
 
 import { HelpText } from '../components';
 import {
-  key,
+  KEY,
   TILE,
   TILEMAP_LAYER,
   TILEMAP_OBJECT,
@@ -20,14 +20,14 @@ export class Main extends Phaser.Scene {
   private isPlayerDead = false;
 
   constructor() {
-    super(key.scene.main);
+    super(KEY.SCENE.MAIN);
   }
 
   create() {
     this.isPlayerDead = false;
 
-    const map = this.make.tilemap({ key: key.tilemap.platformer });
-    const tileset = map.addTilesetImage(TILESET_NAME, key.image.tiles)!;
+    const map = this.make.tilemap({ key: KEY.TILEMAP.PLATFORMER });
+    const tileset = map.addTilesetImage(TILESET_NAME, KEY.IMAGE.TILES)!;
 
     map.createLayer(TILEMAP_LAYER.BACKGROUND, tileset);
     this.groundLayer = map.createLayer(TILEMAP_LAYER.GROUND, tileset)!;
@@ -54,7 +54,7 @@ export class Main extends Phaser.Scene {
         const spike = this.spikeGroup.create(
           tile.getCenterX(),
           tile.getCenterY(),
-          key.image.spike,
+          KEY.IMAGE.SPIKE,
         );
 
         // The map has spikes rotated in Tiled (z key), so parse out that angle to the correct body

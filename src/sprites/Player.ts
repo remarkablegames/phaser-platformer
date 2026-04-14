@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 
-import { key } from '../constants';
+import { KEY } from '../constants';
 
 const ANIMATION = {
   IDLE: 'IDLE',
@@ -20,7 +20,7 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     scene: Phaser.Scene,
     x: number,
     y: number,
-    texture = key.spritesheet.player,
+    texture = KEY.SPRITESHEET.PLAYER,
     frame = 0,
   ) {
     super(scene, x, y, texture, frame);
@@ -62,7 +62,7 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     if (!anims.exists(ANIMATION.IDLE)) {
       anims.create({
         key: ANIMATION.IDLE,
-        frames: anims.generateFrameNumbers(key.spritesheet.player, {
+        frames: anims.generateFrameNumbers(KEY.SPRITESHEET.PLAYER, {
           start: 0,
           end: 3,
         }),
@@ -74,7 +74,7 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     if (!anims.exists(ANIMATION.RUN)) {
       anims.create({
         key: ANIMATION.RUN,
-        frames: anims.generateFrameNumbers(key.spritesheet.player, {
+        frames: anims.generateFrameNumbers(KEY.SPRITESHEET.PLAYER, {
           start: 8,
           end: 15,
         }),
@@ -127,7 +127,7 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
       );
     } else {
       this.anims.stop();
-      this.setTexture(key.spritesheet.player, 10);
+      this.setTexture(KEY.SPRITESHEET.PLAYER, 10);
     }
   }
 }
