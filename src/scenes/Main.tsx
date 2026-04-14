@@ -4,9 +4,9 @@ import { render } from 'phaser-jsx';
 import { HelpText } from '../components';
 import {
   key,
-  Tile,
-  TilemapLayer,
-  TilemapObject,
+  TILE,
+  TILEMAP_LAYER,
+  TILEMAP_OBJECT,
   TILESET_NAME,
 } from '../constants';
 import { TileMarker } from '../graphics';
@@ -29,14 +29,14 @@ export class Main extends Phaser.Scene {
     const map = this.make.tilemap({ key: key.tilemap.platformer });
     const tileset = map.addTilesetImage(TILESET_NAME, key.image.tiles)!;
 
-    map.createLayer(TilemapLayer.Background, tileset);
-    this.groundLayer = map.createLayer(TilemapLayer.Ground, tileset)!;
-    map.createLayer(TilemapLayer.Foreground, tileset);
+    map.createLayer(TILEMAP_LAYER.BACKGROUND, tileset);
+    this.groundLayer = map.createLayer(TILEMAP_LAYER.GROUND, tileset)!;
+    map.createLayer(TILEMAP_LAYER.FOREGROUND, tileset);
 
     // Instantiate a player instance at the location of the "Spawn Point" object in the Tiled map
     const spawnPoint = map.findObject(
-      TilemapLayer.Objects,
-      ({ name }) => name === TilemapObject.SpawnPoint,
+      TILEMAP_LAYER.OBJECTS,
+      ({ name }) => name === TILEMAP_OBJECT.SPAWN_POINT,
     )!;
     this.player = new Player(this, spawnPoint.x!, spawnPoint.y!);
 
@@ -50,7 +50,7 @@ export class Main extends Phaser.Scene {
     // so that we give them a more fitting hitbox
     this.spikeGroup = this.physics.add.staticGroup();
     this.groundLayer.forEachTile((tile) => {
-      if (tile.index === Tile.Spike) {
+      if (tile.index === TILE.SPIKE) {
         const spike = this.spikeGroup.create(
           tile.getCenterX(),
           tile.getCenterY(),

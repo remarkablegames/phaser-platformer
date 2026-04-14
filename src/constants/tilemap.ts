@@ -1,16 +1,16 @@
 export const TILESET_NAME = '0x72-industrial-tileset-32px-extruded';
 
-export enum TilemapLayer {
-  Background = 'Background',
-  Ground = 'Ground',
-  Foreground = 'Foreground',
-  Objects = 'Objects',
-}
+export const TILEMAP_LAYER = {
+  BACKGROUND: 'Background',
+  GROUND: 'Ground',
+  FOREGROUND: 'Foreground',
+  OBJECTS: 'Objects',
+} as const;
 
-export enum TilemapObject {
-  SpawnPoint = 'Spawn Point',
-}
+export const TILEMAP_OBJECT = {
+  SPAWN_POINT: 'Spawn Point',
+} as const;
 
-export enum Tile {
-  Spike = 77,
-}
+export const TILE = {
+  SPIKE: 77,
+} as const;

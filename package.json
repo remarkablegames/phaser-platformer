@@ -1,15 +1,15 @@
 {
   "name": "phaser-platformer",
+  "private": true,
   "version": "1.0.0-alpha",
-  "description": "A template for building Phaser platformer games.",
-  "author": "Mark <mark@remarkablemark.org>",
+  "type": "module",
   "scripts": {
     "build": "npm run clean && vite build",
     "bundle": "bash scripts/bundle.sh",
     "clean": "rm -rf dist",
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
-    "lint:tsc": "tsc --noEmit",
+    "lint:tsc": "tsc --project tsconfig.app.json",
     "prepare": "husky",
     "preview": "vite preview",
     "start": "vite --open"
@@ -37,7 +37,5 @@
     "typescript-eslint": "8.58.2",
     "vite": "8.0.8",
     "vite-plugin-html": "3.2.2"
-  },
-  "private": true,
-  "license": "MIT"
+  }
 }

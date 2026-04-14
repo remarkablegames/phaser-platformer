@@ -2,10 +2,10 @@ import Phaser from 'phaser';
 
 import { key } from '../constants';
 
-enum Animation {
-  Idle = 'PlayerIdle',
-  Run = 'PlayerRun',
-}
+const ANIMATION = {
+  IDLE: 'IDLE',
+  RUN: 'RUN',
+};
 
 type Cursors = Record<
   'w' | 'a' | 's' | 'd' | 'up' | 'left' | 'down' | 'right',
@@ -13,7 +13,7 @@ type Cursors = Record<
 >;
 
 export class Player extends Phaser.Physics.Arcade.Sprite {
-  body!: Phaser.Physics.Arcade.Body;
+  declare body: Phaser.Physics.Arcade.Body;
   private cursors: Cursors;
 
   constructor(
@@ -59,9 +59,9 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     // Create the animations we need from the player spritesheet
     const anims = this.scene.anims;
 
-    if (!anims.exists(Animation.Idle)) {
+    if (!anims.exists(ANIMATION.IDLE)) {
       anims.create({
-        key: Animation.Idle,
+        key: ANIMATION.IDLE,
         frames: anims.generateFrameNumbers(key.spritesheet.player, {
           start: 0,
           end: 3,
@@ -71,9 +71,9 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
       });
     }
 
-    if (!anims.exists(Animation.Run)) {
+    if (!anims.exists(ANIMATION.RUN)) {
       anims.create({
-        key: Animation.Run,
+        key: ANIMATION.RUN,
         frames: anims.generateFrameNumbers(key.spritesheet.player, {
           start: 8,
           end: 15,
@@ -122,7 +122,7 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     // Update the animation/texture based on the state of the player
     if (this.body.blocked.down) {
       this.anims.play(
-        this.body.velocity.x ? Animation.Run : Animation.Idle,
+        this.body.velocity.x ? ANIMATION.RUN : ANIMATION.IDLE,
         true,
       );
     } else {
