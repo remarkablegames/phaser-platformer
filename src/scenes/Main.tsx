@@ -55,17 +55,18 @@ export class Main extends Phaser.Scene {
           tile.getCenterX(),
           tile.getCenterY(),
           KEY.IMAGE.SPIKE,
-        );
+        ) as Phaser.Physics.Arcade.Sprite;
+        const spikeBody = spike.body as Phaser.Physics.Arcade.StaticBody;
 
         // The map has spikes rotated in Tiled (z key), so parse out that angle to the correct body
         // placement
         spike.rotation = tile.rotation;
         if (spike.angle === 0) {
-          spike.body.setSize(32, 6).setOffset(0, 26);
+          spikeBody.setSize(32, 6).setOffset(0, 26);
         } else if (spike.angle === -90) {
-          spike.body.setSize(6, 32).setOffset(26, 0);
+          spikeBody.setSize(6, 32).setOffset(26, 0);
         } else if (spike.angle === 90) {
-          spike.body.setSize(6, 32).setOffset(0, 0);
+          spikeBody.setSize(6, 32).setOffset(0, 0);
         }
 
         this.groundLayer.removeTileAt(tile.x, tile.y);
