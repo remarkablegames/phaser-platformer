@@ -167,6 +167,7 @@
           "height": 0,
           "id": 1,
           "name": "Spawn Point",
+          "opacity": 1,
           "point": true,
           "rotation": 0,
           "type": "",
@@ -187,7 +188,7 @@
   "nextobjectid": 7,
   "orientation": "orthogonal",
   "renderorder": "right-down",
-  "tiledversion": "1.10.2",
+  "tiledversion": "1.12.1",
   "tileheight": 32,
   "tilesets": [
     {
@@ -1353,6 +1354,7 @@
                 "height": 6,
                 "id": 5,
                 "name": "",
+                "opacity": 1,
                 "rotation": 0,
                 "type": "",
                 "visible": true,
