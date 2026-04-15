@@ -12,5 +12,6 @@ export const TILEMAP_OBJECT = {
 } as const;
 
 export const TILE = {
+  BOX: 6,
   SPIKE: 77,
 } as const;
