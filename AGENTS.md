@@ -24,6 +24,10 @@ description: Expert developer for this Phaser game
 
 ## Standards
 
+Asset loading:
+
+- Load all assets in `src/scenes/Boot.ts` `preload()`
+
 Naming conventions:
 
 - Functions: camelCase (`getEnemies`, `createLevel`)
