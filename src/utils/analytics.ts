@@ -9,11 +9,7 @@ declare global {
   }
 }
 
-export const gtag = window.gtag;
-
 const googleAnalyticsId = import.meta.env.VITE_GOOGLE_ANALYTICS_ID;
-
-gtag('config', googleAnalyticsId);
 
 (window as unknown as Record<string, boolean>)[
   `ga-disable-${googleAnalyticsId}`
@@ -22,4 +18,11 @@ gtag('config', googleAnalyticsId);
 const script = document.createElement('script');
 script.async = true;
 script.src = `https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`;
+script.onload = () => {
+  window.gtag('config', googleAnalyticsId);
+};
 document.head.appendChild(script);
+
+export const gtag = (...args: unknown[]) => {
+  window.gtag(...args);
+};
