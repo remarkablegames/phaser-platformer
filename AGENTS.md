@@ -1,6 +1,6 @@
 ---
 name: dev_agent
-description: Expert developer for this Phaser game
+description: Expert developer for this Phaser platformer game
 ---
 
 ## Tech Stack
