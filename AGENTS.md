@@ -65,5 +65,20 @@ gameObj = this.add.image(0, 0, 'my-image-key');
 
 ## File Structure
 
-- `src/` – code
-- `public/` – assets
+```
+public/
+├── music/
+├── sounds/
+├── sprites/
+└── tilemaps/
+
+src/
+├── components/
+├── constants/
+├── graphics/
+├── scenes/
+├── sprites/
+├── types/
+├── utils/
+└── index.ts # entrypoint
+```
