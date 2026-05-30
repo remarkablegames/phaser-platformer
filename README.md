@@ -36,7 +36,7 @@ Install the dependencies:
 npm install
 ```
 
-Rename the project:
+Rename the game:
 
 ```sh
 git grep -l phaser-platformer | xargs sed -i '' -e 's/phaser-platformer/my-game/g'
