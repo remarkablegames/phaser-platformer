@@ -30,7 +30,13 @@ export class Main extends Phaser.Scene {
     const tileset = map.addTilesetImage(TILESET_NAME, KEY.IMAGE.TILES)!;
 
     map.createLayer(TILEMAP_LAYER.BACKGROUND, tileset);
-    this.groundLayer = map.createLayer(TILEMAP_LAYER.GROUND, tileset)!;
+    this.groundLayer = map.createLayer(
+      TILEMAP_LAYER.GROUND,
+      tileset,
+      undefined,
+      undefined,
+      false,
+    ) as Phaser.Tilemaps.TilemapLayer;
     map.createLayer(TILEMAP_LAYER.FOREGROUND, tileset);
 
     // Instantiate a player instance at the location of the "Spawn Point" object in the Tiled map
