@@ -10,13 +10,12 @@ export default defineConfig({
           groups: [
             {
               name: 'phaser',
-              test: /node_modules\/(phaser|phaser-jsx)/,
+              test: /node_modules\/(phaser|phaser-jsx)\//,
             },
           ],
         },
       },
     },
   },
-
   plugins: [createHtmlPlugin()],
 });
