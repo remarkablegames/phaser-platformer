@@ -9,7 +9,7 @@
 
 <kbd>phaser-platformer</kbd> is a template for making [Phaser](https://phaser.io/) platformer games. The template is inspired by [`phaser-3-tilemap-blog-posts`](https://github.com/mikewesthad/phaser-3-tilemap-blog-posts/tree/master/examples/post-2) (read the [Medium story](https://itnext.io/3d68e73d494a)).
 
-Play the game on:
+Play in your browser:
 
 - [remarkablegames](https://remarkablegames.org/phaser-platformer/)
 
