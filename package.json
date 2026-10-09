@@ -1,8 +1,7 @@
 {
   "name": "phaser-platformer",
-  "private": true,
   "version": "1.0.0-alpha",
-  "type": "module",
+  "author": "Mark <mark@remarkablemark.org>",
   "scripts": {
     "build": "npm run clean && vite build",
     "bundle": "bash scripts/bundle.sh",
@@ -36,5 +35,7 @@
     "typescript-eslint": "8.71.1",
     "vite": "8.3.2",
     "vite-plugin-html": "3.2.2"
-  }
+  },
+  "private": true,
+  "license": "MIT"
 }
