@@ -20,7 +20,7 @@ export class Game extends Phaser.Scene {
   private isPlayerDead = false;
 
   constructor() {
-    super(KEY.SCENE.MAIN);
+    super(KEY.SCENE.GAME);
   }
 
   create() {

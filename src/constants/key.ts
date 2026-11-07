@@ -5,7 +5,7 @@ export const IMAGE = {
 
 export const SCENE = {
   BOOT: 'BOOT',
-  MAIN: 'MAIN',
+  GAME: 'GAME',
 } as const;
 
 export const SPRITESHEET = {
