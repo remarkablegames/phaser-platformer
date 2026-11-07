@@ -1,4 +1,4 @@
-import eslint from '@eslint/js';
+import js from '@eslint/js';
 import { defineConfig, includeIgnoreFile } from 'eslint/config';
 import prettier from 'eslint-plugin-prettier';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
@@ -14,14 +14,11 @@ export default defineConfig([
 
     plugins: {
       'simple-import-sort': simpleImportSort,
-      eslint,
       prettier,
     },
 
     extends: [
-      eslint.configs.recommended,
-      tseslint.configs.recommended,
-      tseslint.configs.recommendedTypeChecked,
+      js.configs.recommended,
       tseslint.configs.strictTypeChecked,
       tseslint.configs.stylisticTypeChecked,
     ],
@@ -35,10 +32,7 @@ export default defineConfig([
 
     rules: {
       '@typescript-eslint/no-non-null-assertion': 'off',
-      '@typescript-eslint/no-unsafe-argument': 'off',
-      '@typescript-eslint/no-unsafe-return': 'off',
       'no-console': 'error',
-      'no-debugger': 'error',
       'prettier/prettier': 'error',
       'simple-import-sort/exports': 'error',
       'simple-import-sort/imports': 'error',
