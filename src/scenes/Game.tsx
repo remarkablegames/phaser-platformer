@@ -12,7 +12,7 @@ import {
 import { TileMarker } from '../graphics';
 import { Player } from '../sprites';
 
-export class Main extends Phaser.Scene {
+export class Game extends Phaser.Scene {
   private groundLayer!: Phaser.Tilemaps.TilemapLayer;
   private player!: Player;
   private spikeGroup!: Phaser.Physics.Arcade.StaticGroup;
